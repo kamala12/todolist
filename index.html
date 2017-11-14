@@ -1,0 +1,101 @@
+<!DOCTYPE html> 
+<html> 
+	<head>
+		<meta charset="utf-8" />
+	<title>ToDo List</title>
+			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+			<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+			<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+	<body>
+<div data-role="page" id="page1">
+	<div data-role="header">
+		<h1>ToDo List</h1>
+		<a href="#">Home</a>
+	</div><!-- /header -->
+
+
+
+
+	
+<div id="container">
+  <div id="header">
+    <h1>Todo List</h1>
+  </div>
+  <div id="inputContainer">
+    <input id="taskInput" type="text" placeholder="Add a task" maxlength="50" />
+  </div>
+  <div id="listWrapper">
+    <ul id="taskList">
+    </ul>
+  </div>
+  <div id="deleteBtnWrapper" >
+    <button id="deleteCompletedBtn" onclick="deleteCompleted()">Delete Completed</button>
+    <button id="clearTasksBtn" onclick="deleteAll()">Clear</button>
+  </div>
+</div>
+	
+	
+	
+	
+	
+
+
+
+
+<footer data-role="footer" data-position="fixed">
+	<nav data-role="navbar">
+		<ul>
+			<li><a href="#" data-icon="home">Home</a></li>
+			<li><a href="#" data-icon="grid">Home</a></li>
+			<li><a href="#" data-icon="info">Home</a></li>
+		</ul>
+	</nav>
+</footer>
+</div><!-- /page -->
+
+<script type="text/javascript">	
+		
+		jQuery(document).on('ready', function() {
+			jQuery('form#add-new-task').bind('submit', function(event){
+				event.preventDefault();
+
+				var tbody = jQuery('#to-do-list > tbody');
+				
+				tbody.append('<tr><th scope="row" style="background-color:' + this['new-task-color'].value + 
+					'"><input type="checkbox" /></th><td>' + this['new-task-date'].value +
+					'</td><td>' + this['new-task-priority'].value + '</td><td>' + this['new-task-name'].value + 
+					'</td><td>' + this['new-task-desc'].value + '</td><td>' + this['new-task-email'].value + '</td></tr>');				
+				
+				return true;
+			});
+		});
+	</script>	
+<script>
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}</script>
+
+</body>
+</html>
